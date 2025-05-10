@@ -214,7 +214,7 @@ export default function Profile({
       </div>
 
       {/* Edit buttons */}
-      {settingsPage ? (
+      {/*{settingsPage ? (
         <div className="fixed bottom-10 right-10 flex items-center space-x-3">
           <p className="text-sm text-gray-500">{error}</p>
           <button
@@ -248,7 +248,7 @@ export default function Profile({
             <EditIcon className="h-4 w-4 text-white" />
           </a>
         </Link>
-      ) : null}
+      ) : null}*/}
     </div>
   );
 }
