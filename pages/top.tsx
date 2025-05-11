@@ -35,7 +35,7 @@ export default function Top({ movies }: TopProps) {
 
 export const getStaticProps: GetStaticProps<TopProps> = async () => {
     try {
-        const db = client.db("sample_mflix");
+        const db = client.db("diploma");
 
         const movies = await db
             .collection("movies")

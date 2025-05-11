@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     try {
-        const db = client.db("sample_mflix");
+        const db = client.db("diploma");
         const movies = await db
             .collection("movies")
             .find({})

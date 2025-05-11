@@ -36,7 +36,7 @@ export default Movies;
 
 export const getServerSideProps: GetServerSideProps = async () => {
     try {
-        const db = client.db("sample_mflix");
+        const db = client.db("diploma");
         const movies = await db
             .collection("movies")
             .find({})
