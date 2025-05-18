@@ -12,7 +12,7 @@ const settings = {
 const MapComponent = () => {
     return (
         <div className="h-[600px] w-full">
-            <APIProvider apiKey={"AIzaSyBrqM03mFA9phPmYZjAQHc1QxraW1-q9o4"} libraries={["marker"]}>
+            <APIProvider apiKey={process.env.NEXT_PUBLIC_MAP_API_KEY} libraries={["marker"]}>
                 <Map {...settings}>
                     {/*<Markers pois={locations} />*/}
                     {/*<Overlay data={overlayData} />*/}
