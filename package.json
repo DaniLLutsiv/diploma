@@ -11,10 +11,13 @@
     "@tailwindcss/postcss": "^4.1.6",
     "@tailwindcss/typography": "^0.5.16",
     "@vis.gl/react-google-maps": "^1.5.2",
+    "i18next": "^25.2.0",
     "mongodb": "^4.8.1",
     "next": "^15.3.2",
+    "next-i18next": "^15.4.2",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "react-i18next": "^15.5.1"
   },
   "devDependencies": {
     "@types/node": "^22.15.17",

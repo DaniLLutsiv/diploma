@@ -1,13 +1,16 @@
 import { AppProps } from 'next/app';
 // import { SessionProvider } from 'next-auth/react';
 // import Layout from '@/components/layout';
-import "../styles/globals.css";
-import "../styles/theme.css";
+import "styles/globals.css";
+import "styles/theme.css";
+import config from 'next-i18next.config';
+import { appWithTranslation } from 'next-i18next'
 
-export default function MyApp({
+
+const MyApp = ({
                                   Component,
                                   pageProps: { session, ...pageProps }
-                              }: AppProps) {
+                              }: AppProps) => {
     return (
         // <SessionProvider session={session}>
         //     <Layout {...pageProps}>
@@ -16,3 +19,5 @@ export default function MyApp({
         // </SessionProvider>
     );
 }
+
+export default appWithTranslation(MyApp, config)
