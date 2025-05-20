@@ -4,6 +4,13 @@ import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
 import type {InferGetServerSidePropsType, GetServerSideProps} from "next";
 import client from "lib/mongodb";
 import {Header} from "components/header";
+import {ImageSlider} from "components/image_slider";
+import {Swiper, SwiperSlide} from "swiper/react";
+import { Autoplay, EffectFade } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import "swiper/css/effect-fade";
 
 type ConnectionStatus = {
     isConnected: boolean;
@@ -43,7 +50,8 @@ export const getServerSideProps: GetServerSideProps<ConnectionStatus> = async ({
 export default function Home({
                                  isConnected,
                              }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-    const {t} = useTranslation()
+    const {t} = useTranslation();
+    const images = ["/images/bg.jpg", "/images/bg2.png"];
 
     return (
         <div>
@@ -53,9 +61,31 @@ export default function Home({
             </Head>
 
             <main>
-                <div className="bg-blue-400 bg-[url(/images/bg.jpg)]">
-                    <Header/>
-                </div>
+                <Swiper
+                    speed={1000}
+                    autoplay={{
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    }}
+
+                    spaceBetween={0}
+                    centeredSlides
+                    centeredSlidesBounds
+                    effect={'fade'}
+                    modules={[Autoplay, EffectFade]}
+                >
+                    <div className="absolute z-20 top-0 left-0 right-0">
+                        <Header/>
+                    </div>
+                    {images.map((src) => {
+                        return (
+                            <SwiperSlide key={src}>
+                                <img src={src} alt=""/>
+                            </SwiperSlide>
+                        );
+                    })}
+                </Swiper>
+
             </main>
         </div>
     );

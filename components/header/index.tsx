@@ -13,7 +13,7 @@ export const Header = () => {
             <nav className="px-4 lg:px-6 py-2.5 dark:bg-gray-800">
                 <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                     <NavLink href="/" className="flex items-center">
-                        <img src="/images/logo-white.png" className="mr-3 h-10 sm:h-9"
+                        <img src="/images/logo.png" className="mr-3 h-9 sm:h-12"
                              alt="Лого"/>
                         <span
                             className="self-center text-xl font-semibold whitespace-nowrap dark:text-white"></span>

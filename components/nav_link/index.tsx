@@ -14,8 +14,8 @@ const NavLink = ({
                      children,
                      href,
                      activeClassName = "active",
-                     nonActiveClassName,
-                     className,
+                     nonActiveClassName = "",
+                     className = "",
                      ...rest
                  }: Props) => {
     const pathname = usePathname();
