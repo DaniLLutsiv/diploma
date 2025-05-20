@@ -7,9 +7,13 @@ module.exports = {
     defaultNS: 'common',
     fallbackLng: 'ua',
     localeDetection: false,
-    // reloadOnPrerender: isLocalEnv,
+    reloadOnPrerender: false,
     saveMissing: true,
     serializeConfig: false,
+    localePath:
+        typeof window === 'undefined'
+            ? require('path').resolve('./public/locales')
+            : '/public/locales',
     // use: [i18nextMiddleware.LanguageDetector],
     detection: {
         caches: ['cookie'],
