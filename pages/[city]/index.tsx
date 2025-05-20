@@ -6,15 +6,12 @@ import client from "lib/mongodb";
 import {Header} from "components/header";
 
 type ConnectionStatus = {
-    locale: string;
     isConnected: boolean;
 };
 
-export const getServerSideProps: GetServerSideProps<
-    ConnectionStatus
-> = async ({locale}) => {
+export const getServerSideProps: GetServerSideProps<ConnectionStatus> = async ({locale = ""}) => {
     const i18nConfig = await serverSideTranslations(locale, "common");
-    
+
     try {
         await client.connect();
         // `await client.connect()` will use the default database passed in the MONGODB_URI
