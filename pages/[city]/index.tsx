@@ -4,7 +4,6 @@ import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
 import type {InferGetServerSidePropsType, GetServerSideProps} from "next";
 import client from "lib/mongodb";
 import {Header} from "components/header";
-import {ImageSlider} from "components/image_slider";
 import {Swiper, SwiperSlide} from "swiper/react";
 import { Autoplay, EffectFade } from 'swiper/modules';
 import 'swiper/css';
