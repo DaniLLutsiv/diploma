@@ -10,7 +10,7 @@ export default function Home() {
     const router = useRouter();
 
     useLayoutEffect(() => {
-        router.push('/zaporizhzhia');
+        void router.push('/zaporizhzhia');
     }, [router]);
 
     return (

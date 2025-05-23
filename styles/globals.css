@@ -1,6 +1,14 @@
-@layer theme, base, utilities;
+@import url('https://fonts.googleapis.com/css2?family=Marmelad&family=Palanquin+Dark:wght@400;500;600;700&display=swap');
 @import "tailwindcss" layer(theme) important;
 @import "./theme.css" layer(theme);
+
+@layer theme, base, utilities;
+
+:root {
+    --fontFamilyBase: "Marmelad";
+    font-family: var(--fontFamilyBase)"Marmelad", sans-serif;
+    --fontFamilySecond: "Palanquin Dark", sans-serif;
+}
 
 .fiCircle {
     width: 24px !important;
@@ -10,4 +18,21 @@
     border: none;
     box-shadow: inset 0 0 0 2px rgba(0, 0, 0, .06);
     background-size: cover !important;
+}
+
+.bg-after {
+    position: relative;
+
+    &:after {
+        z-index: 0;
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        opacity: 1;
+        background: radial-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.5));
+        pointer-events: none;
+    }
 }

@@ -63,7 +63,7 @@ export const Header = () => {
 
     return (
         <header className="z-1 relative">
-            <nav className="px-4 lg:px-6 py-2.5 bg-linear-to-br">
+            <nav className="px-4 lg:px-6 py-2.5">
                 <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                     <BurgerButton onClick={() => setMobileMenuOpen(true)}>
                         <img src={"/images/icons/burger_white.svg"} alt=""/>

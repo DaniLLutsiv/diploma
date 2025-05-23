@@ -5,11 +5,9 @@ import "styles/globals.css";
 import "styles/theme.css";
 import config from 'next-i18next.config';
 import {appWithTranslation} from 'next-i18next'
-import {ThemeProvider, createTheme, StyledEngineProvider} from "@mui/material/styles";
-
-const theme = createTheme({
-    typography: {},
-});
+import {StyledEngineProvider, ThemeProvider} from "@mui/material/styles";
+import {AppCacheProvider} from '@mui/material-nextjs/v15-pagesRouter';
+import {theme} from "styles/theme";
 
 const MyApp = ({
                    Component,
@@ -19,9 +17,11 @@ const MyApp = ({
         // <SessionProvider session={session}>
         //     <Layout {...pageProps}>
         <StyledEngineProvider injectFirst>
-            <ThemeProvider theme={theme}>
-                <Component {...pageProps} />
-            </ThemeProvider>
+            <AppCacheProvider>
+                <ThemeProvider theme={theme}>
+                    <Component {...pageProps} />
+                </ThemeProvider>
+            </AppCacheProvider>
         </StyledEngineProvider>
         // </Layout>
         // </SessionProvider>
