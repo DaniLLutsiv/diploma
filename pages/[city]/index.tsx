@@ -10,6 +10,21 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import "swiper/css/effect-fade";
+import styled from "@emotion/styled";
+
+const Wrapper = styled.main`
+    .swiper-wrapper {
+        &:after {
+            z-index: 1;
+            content: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, #00000000 20%);
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    }
+`;
 
 type ConnectionStatus = {
     isConnected: boolean;
@@ -59,14 +74,13 @@ export default function Home({
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
 
-            <main>
+            <Wrapper>
                 <Swiper
                     speed={1000}
                     autoplay={{
                         delay: 5000,
                         disableOnInteraction: false,
                     }}
-
                     spaceBetween={0}
                     centeredSlides
                     centeredSlidesBounds
@@ -85,7 +99,7 @@ export default function Home({
                     })}
                 </Swiper>
 
-            </main>
+            </Wrapper>
         </div>
     );
 }

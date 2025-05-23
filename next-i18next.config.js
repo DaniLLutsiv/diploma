@@ -5,10 +5,10 @@ module.exports = {
         locales: ['en', 'ua'],
     },
     defaultNS: 'common',
+    defaultLocale: 'ua',
     fallbackLng: 'ua',
     localeDetection: false,
     reloadOnPrerender: false,
-    saveMissing: true,
     serializeConfig: false,
     localePath:
         typeof window === 'undefined'
