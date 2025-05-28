@@ -2,7 +2,6 @@ import {APIProvider, Map} from "@vis.gl/react-google-maps";
 import {Markers} from "./markers";
 import {ICategory, ILocation} from "types";
 import React from "react";
-import {MapProps} from "@vis.gl/react-google-maps/src/components/map";
 import styled from "@emotion/styled";
 import {Filters} from "./filters";
 
@@ -11,7 +10,7 @@ const Wrapper = styled.div`
     height: calc(90vh - 68px);
 `;
 
-const settings: MapProps = {
+const settings = {
     defaultZoom: 12,
     defaultCenter: {lat: 47.8290584, lng: 35.1549364},
     mapId: "71dc18a4565ae96c64de2f92",
