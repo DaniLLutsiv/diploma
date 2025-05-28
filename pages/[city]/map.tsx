@@ -1,16 +1,24 @@
 import Head from "next/head";
 import type {GetServerSideProps, InferGetServerSidePropsType} from "next";
-import client from "../../lib/mongodb";
-import {Header} from "../../components/header";
-import {MapComponent} from "../../components/map/map";
+import client from "lib/mongodb";
+import {Header} from "components/header";
+import {MapComponent} from "components/map/map";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
+import {useTranslation} from "next-i18next";
+import {ICategory, ILocation} from "types";
+import {formatCategories, formatLocations} from "lib";
 
 type ConnectionStatus = {
     isConnected: boolean;
+    locations: ILocation[];
+    categories: ICategory[];
 };
 
 export const getServerSideProps: GetServerSideProps<
     ConnectionStatus
-> = async () => {
+> = async ({locale = ""}) => {
+    const i18nConfig = await serverSideTranslations(locale, "common");
+
     try {
         await client.connect();
         // `await client.connect()` will use the default database passed in the MONGODB_URI
@@ -21,36 +29,51 @@ export const getServerSideProps: GetServerSideProps<
         //
         // Then you can execute queries against your database like so:
         // db.find({}) or any of the MongoDB Node Driver commands
+        const db = await client.db("diploma")
+        const locationCollection = db.collection('location')
+        const locationRecords = await locationCollection.find().toArray()
+        const locations = formatLocations(locationRecords);
+        const categoriesCollection = db.collection('category')
+        const categoriesRecords = await categoriesCollection.find().toArray()
+        const categories = formatCategories(categoriesRecords);
 
         return {
-            props: {isConnected: true},
+            props: {
+                ...i18nConfig,
+                isConnected: true,
+                locations,
+                categories,
+            },
         };
     } catch (e) {
         console.error(e);
         return {
-            props: {isConnected: false},
+            props: {
+                ...i18nConfig,
+                isConnected: false,
+                locations: [],
+                categories: [],
+            },
         };
     }
 };
 
-export default function Map({
-                                 isConnected,
-                             }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Map({locations, categories}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+    const {t} = useTranslation();
+
     return (
         <div>
             <Head>
-                <title>Create Next App</title>
+                <title>{t("home.title")}</title>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
 
             <main>
-                <div className="bg-blue-400 bg-[url(/images/bg.jpg)]">
+                <div className="bg-[#6ba3e8]">
                     <Header/>
                 </div>
 
-                {/*<MapProvider>*/}
-                    <MapComponent />
-                {/*</MapProvider>*/}
+                <MapComponent locations={locations} categories={categories}/>
             </main>
         </div>
     );

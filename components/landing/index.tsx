@@ -5,7 +5,7 @@ import Image from "next/image";
 const SubTitle = styled.h2`
     font-family: var(--fontFamilySecond);
     font-size: 32px;
-    font-weight: 700;
+    font-weight: 600;
     text-align: center;
     margin: 0 16px;
 
@@ -167,7 +167,7 @@ export const Landing = () => {
 
             <div className="p-4 md:p-8 relative min-h-[600px] bg-after">
                 <div className="flex flex-col items-center justify-center mx-auto max-w-screen-xl">
-                    <Image fill objectFit="cover" objectPosition="top" style={{width: '100%'}}
+                    <Image fill style={{width: '100%', objectFit: "cover", objectPosition: "top"}}
                            src="/images/zaporizhzhia/bg-3.png" alt=""/>
                     <HistoricalConatiner>
                         <h3>{t("home.landing.historical")}</h3>

@@ -13,6 +13,8 @@ import "swiper/css/effect-fade";
 import styled from "@emotion/styled";
 import {Landing} from "components/landing";
 import {Button} from "@mui/material";
+import NavLink from "components/nav_link";
+import {useRouter} from "next/router";
 
 const Wrapper = styled.main`
     background: #F9F9F9;
@@ -99,6 +101,7 @@ export default function Home({
                                  isConnected,
                              }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const {t} = useTranslation();
+    const {query} = useRouter();
     const images = ["/images/zaporizhzhia/bg.jpg", "/images/zaporizhzhia/bg-2.png"];
 
     return (
@@ -127,7 +130,7 @@ export default function Home({
 
                     <Content>
                         <Title>{t("home.landing.title")}</Title>
-                        <Button variant="contained">{t("home.landing.cta")}</Button>
+                        <Button variant="contained" component={NavLink} href={`/${query.city as string}/map`}>{t("home.landing.cta")}</Button>
                     </Content>
                     {images.map((src) => (
                         <SwiperSlide key={src}>

@@ -45,6 +45,12 @@ const MobileList = styled.div`
     }
 `;
 
+const Container = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+`;
+
 export const Header = () => {
     const {t} = useTranslation();
     const {query} = useRouter();
@@ -64,19 +70,17 @@ export const Header = () => {
     return (
         <header className="z-1 relative">
             <nav className="px-4 lg:px-6 py-2.5">
-                <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-                    <BurgerButton onClick={() => setMobileMenuOpen(true)}>
+                <Container className="mx-auto max-w-screen-xl">
+                    <BurgerButton className="justify-self-start" onClick={() => setMobileMenuOpen(true)}>
                         <img src={"/images/icons/burger_white.svg"} alt=""/>
                     </BurgerButton>
 
-                    <NavLink href="/" className="hidden items-center sm:flex">
+                    <NavLink href="/" className="justify-self-center md:justify-self-start sm:flex">
                         <img src="/images/logo_white.png" className="mr-3 h-9 sm:h-12"
                              alt="Лого"/>
-                        <span
-                            className="self-center text-xl font-semibold whitespace-nowrap"></span>
                     </NavLink>
 
-                    <Links>
+                    <Links className="justify-self-center">
                         {links.map(({url, text}) => (
                             <NavLink key={url} href={url} className="block py-2 pr-4 pl-3 rounded lg:bg-transparent lg:p-0">
                                 {text}
@@ -104,8 +108,8 @@ export const Header = () => {
                         </MobileList>
                     </SwipeableDrawer>
 
-                    <LangSelector/>
-                </div>
+                    <LangSelector />
+                </Container>
             </nav>
         </header>
     )

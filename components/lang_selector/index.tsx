@@ -60,7 +60,7 @@ const LangSelector = () => {
     }
 
     return (
-        <div className="relative">
+        <div className="relative justify-self-end">
             <button
                 onClick={() => setIsOpen(!isOpen)}
                 type="button"

@@ -34,5 +34,14 @@ export const theme = createTheme({
                 },
             },
         },
+        MuiCheckbox: {
+            styleOverrides: {
+                root: {
+                    "&.Mui-checked": {
+                        color: "#6ba3e8"
+                    }
+                }
+            }
+        }
     }
 });
