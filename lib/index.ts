@@ -1,5 +1,5 @@
 import {Document, WithId} from "mongodb";
-import {ILocation} from "types";
+import {CategoryType, ILocation} from "types";
 
 export const fixJson = <T = any>(data: T) => JSON.parse(JSON.stringify(data));
 
@@ -10,9 +10,10 @@ export const formatLocation = (location: WithId<Document>) => ({
     title: JSON.parse(location.title),
     description: JSON.parse(location.description),
     images: JSON.parse(location.image),
+    categories: location.categories.map(({type}: {type: CategoryType}) => type),
 }) as unknown as ILocation
 
-export const formatLocations = (data: WithId<Document>[]) => {
+export const formatLocations = (data: Document[]) => {
     return fixJson(data.map(formatLocation))
 }
 

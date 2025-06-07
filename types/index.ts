@@ -26,7 +26,7 @@ export interface ILocation {
     coordinates: google.maps.LatLngLiteral;
     images: string[];
     description: Record<string, string>;
-    categories?: number[];
+    categories?: CategoryType[];
     status: MarkerStatus;
     type: MarkerType;
 }

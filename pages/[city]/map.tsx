@@ -8,6 +8,7 @@ import {useTranslation} from "next-i18next";
 import {ICategory, ILocation} from "types";
 import {formatCategories, formatLocations} from "lib";
 import {Footer} from "components/footer";
+import {ObjectId} from "mongodb";
 
 type ConnectionStatus = {
     isConnected: boolean;
@@ -32,7 +33,16 @@ export const getServerSideProps: GetServerSideProps<
         // db.find({}) or any of the MongoDB Node Driver commands
         const db = await client.db("diploma")
         const locationCollection = db.collection('location')
-        const locationRecords = await locationCollection.find().toArray()
+        const locationRecords = await locationCollection.aggregate([
+            {
+                $lookup: {
+                    from: 'category',
+                    localField: 'categories',
+                    foreignField: '_id',
+                    as: 'categories'
+                }
+            }
+        ]).toArray()
         const locations = formatLocations(locationRecords);
         const categoriesCollection = db.collection('category')
         const categoriesRecords = await categoriesCollection.find().toArray()
@@ -76,7 +86,7 @@ export default function Map({locations, categories}: InferGetServerSidePropsType
 
                 <MapComponent locations={locations} categories={categories}/>
 
-                <Footer />
+                <Footer/>
             </main>
         </div>
     );

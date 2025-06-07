@@ -31,7 +31,22 @@ export const getServerSideProps: GetServerSideProps<ConnectionStatus> = async ({
     await client.connect();
     const db = await client.db("diploma")
     const locationCollection = db.collection('location')
-    const locationRecord = await locationCollection.findOne({_id: new ObjectId(locationId)})
+    // const locationRecord = await locationCollection.findOne({_id: new ObjectId(locationId)})
+    const locationRecords = await locationCollection.aggregate([
+        {
+            $match: { _id: new ObjectId(locationId) }
+        },
+        {
+            $lookup: {
+                from: 'category',
+                localField: 'categories',
+                foreignField: '_id',
+                as: 'categories'
+            }
+        }
+    ]).toArray()
+
+    const locationRecord = locationRecords[0]
 
     if (locationRecord === null) {
         return {notFound: true};

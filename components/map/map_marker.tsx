@@ -4,8 +4,8 @@ import styled from "@emotion/styled";
 import {Box} from "@mui/material";
 import {Marker} from "@googlemaps/markerclusterer";
 import {useTranslation} from "next-i18next";
-import {ILocation} from "types";
-import {poiCommon, poiIcons} from "constants";
+import {CategoryType, ILocation} from "types";
+import {poiCommon, poiIcons} from "constants/index";
 import {useIsMobile} from "hooks";
 
 const CustomMarker = styled(Box)<{ color?: string }>`
@@ -42,7 +42,7 @@ export const MapMarker: React.FC<IProps> =
         const {isMobile} = useIsMobile()
         const {id, coordinates} = location;
         const title = location.title[i18n.language];
-        const poiImage = poiIcons[location.type] || poiCommon;
+        const poiImage = poiIcons[location.categories?.[0] || CategoryType.Common];
 
         const handleClick = useCallback(
             (ev: google.maps.MapMouseEvent, id: string) => {
