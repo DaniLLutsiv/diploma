@@ -3,7 +3,7 @@ import {CategoryType, ILocation} from "types";
 
 export const fixJson = <T = any>(data: T) => JSON.parse(JSON.stringify(data));
 
-export const formatLocation = (location: WithId<Document>) => ({
+export const formatLocation = (location: Document) => ({
     ...location,
     id: location._id,
     coordinates: JSON.parse(location.coordinates),
