@@ -86,7 +86,7 @@ const LangSelector = () => {
             </button>
 
             {isOpen && <div
-                className="origin-top-right absolute right-5 mt-2 w-20 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 bg-white"
+                className="origin-top-right absolute right-5 mt-2 w-20 rounded-md shadow-lg ring-1 ring-[#00000055] ring-opacity-5 bg-white"
                 role="menu"
                 aria-orientation="vertical"
                 aria-labelledby={LANGUAGE_SELECTOR_ID}

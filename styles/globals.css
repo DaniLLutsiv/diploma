@@ -6,7 +6,7 @@
 
 :root {
     --fontFamilyBase: "Marmelad";
-    font-family: var(--fontFamilyBase)"Marmelad", sans-serif;
+    font-family: var(--fontFamilyBase), sans-serif;
     --fontFamilySecond: "Palanquin Dark", sans-serif;
 }
 
@@ -35,4 +35,8 @@
         background: radial-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.5));
         pointer-events: none;
     }
+}
+
+.custom-marker {
+    transition: all .1s ease-in-out;
 }

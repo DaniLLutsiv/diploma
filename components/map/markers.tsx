@@ -1,15 +1,16 @@
 import React, {Fragment, useCallback, useEffect, useRef, useState} from "react";
-// import {MapMarker} from "views/components/map_marker/map_marker.component";
 import {Marker, MarkerClusterer} from "@googlemaps/markerclusterer";
 import {useMap} from "@vis.gl/react-google-maps";
 import {ILocation, MarkerStatus} from "types";
 import {MapMarker} from "components/map/map_marker";
 
 interface IMarkers {
-	pois: ILocation[];
+	selectedLocationId?: string | null;
+	locations: ILocation[];
+	onOpenModal?: (id: string) => void;
 }
 
-export const Markers: React.FC<IMarkers> = ({pois}) => {
+export const Markers: React.FC<IMarkers> = ({locations, onOpenModal, selectedLocationId}) => {
 	const map = useMap();
 	const [hoverId, setHoverId] = useState<string | null>(null);
 	const [markers, setMarkers] = useState<{[key: string]: Marker}>({});
@@ -62,22 +63,23 @@ export const Markers: React.FC<IMarkers> = ({pois}) => {
 
 	return (
 		<Fragment>
-			{pois.map((poi, index) => {
-				const zIndex = hoverId === poi.id ? pois.length + 1 : index + 1;
+			{locations.map((location, index) => {
+				const zIndex = hoverId === location.id ? locations.length + 1 : index + 1;
 
-				if (poi.status === MarkerStatus.Hidden) {
+				if (location.status === MarkerStatus.Hidden) {
 					return null;
 				}
 
 				return (
 					<MapMarker
-						key={poi.id}
-						poi={poi}
+						key={location.id}
+						location={location}
 						zIndex={zIndex}
-						hoverId={hoverId}
+						hoverId={selectedLocationId || hoverId}
 						onMouseEnter={onMouseEnter}
 						onMouseLeave={onMouseLeave}
 						setMarkerRef={setMarkerRef}
+						onOpenModal={onOpenModal}
 					/>
 				);
 			})}

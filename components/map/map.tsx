@@ -1,9 +1,11 @@
 import {APIProvider, Map} from "@vis.gl/react-google-maps";
+import styled from "@emotion/styled";
+import React, {useState} from "react";
 import {Markers} from "./markers";
 import {ICategory, ILocation} from "types";
-import React from "react";
-import styled from "@emotion/styled";
-import {Filters} from "./filters";
+import {Filters} from "components/map/filters";
+import {LocationModal} from "components/map/location_modal";
+import {CurrentLocation} from "./current_location";
 
 const Wrapper = styled.div`
     width: 100%;
@@ -25,12 +27,21 @@ interface IMapComponent {
 }
 
 const MapComponent: React.FC<IMapComponent> = ({locations, categories}) => {
+    const [selectedLocationId, setSelectedLocationId] = useState<string | null>(null)
+    const selectedLocation = locations.find((location) => location.id === selectedLocationId);
+
+    const closeModal = () => {
+        setSelectedLocationId(null);
+    }
+
     return (
         <Wrapper>
             <APIProvider apiKey={process.env.NEXT_PUBLIC_MAP_API_KEY as string} libraries={["marker"]}>
                 <Map {...settings}>
-                    <Markers pois={locations} />
+                    <Markers locations={locations} onOpenModal={setSelectedLocationId} selectedLocationId={selectedLocationId}/>
                     <Filters categories={categories} />
+                    <LocationModal location={selectedLocation} onClose={closeModal} />
+                    <CurrentLocation />
                 </Map>
             </APIProvider>
         </Wrapper>

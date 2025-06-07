@@ -1,6 +1,6 @@
 {
   "home": {
-    "title": "Туристичне Запоріжжя EN",
+    "title": "Visit Zaporizhzhia",
     "landing": {
       "title": "Zaporizhzhia",
       "cta": "Open map",
@@ -17,5 +17,16 @@
   "header": {
     "home": "Home",
     "map": "Map"
+  },
+  "map": {
+    "title": "Visit Zaporizhzhia",
+    "modal_location": {
+      "more": "More"
+    }
+  },
+  "location": {
+    "title": "Visit Zaporizhzhia",
+    "button": "Get direction",
+    "tooltip": "Access to location blocked"
   }
 }

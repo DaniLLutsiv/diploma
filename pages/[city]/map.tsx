@@ -7,6 +7,7 @@ import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {useTranslation} from "next-i18next";
 import {ICategory, ILocation} from "types";
 import {formatCategories, formatLocations} from "lib";
+import {Footer} from "components/footer";
 
 type ConnectionStatus = {
     isConnected: boolean;
@@ -64,7 +65,7 @@ export default function Map({locations, categories}: InferGetServerSidePropsType
     return (
         <div>
             <Head>
-                <title>{t("home.title")}</title>
+                <title>{t("map.title")}</title>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
 
@@ -74,6 +75,8 @@ export default function Map({locations, categories}: InferGetServerSidePropsType
                 </div>
 
                 <MapComponent locations={locations} categories={categories}/>
+
+                <Footer />
             </main>
         </div>
     );

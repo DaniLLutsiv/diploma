@@ -15,6 +15,7 @@ import {Landing} from "components/landing";
 import {Button} from "@mui/material";
 import NavLink from "components/nav_link";
 import {useRouter} from "next/router";
+import {Footer} from "../../components/footer";
 
 const Wrapper = styled.main`
     background: #F9F9F9;
@@ -140,6 +141,8 @@ export default function Home({
                 </Swiper>
 
                 <Landing/>
+
+                <Footer />
             </Wrapper>
         </div>
     );

@@ -9,11 +9,10 @@ const Wrapper = styled.div`
     top: 20px;
     left: 20px;
     background: #ffffff;
-    border-radius: 4px;
+    border-radius: 8px;
 `;
 
 const Button = styled(IconButton)`
-    
     &:hover {
         background: #f3f3f3;
     }
