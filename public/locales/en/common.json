@@ -5,7 +5,7 @@
       "title": "Zaporizhzhia",
       "cta": "Open map",
       "about_city": "Zaporizhzhia — a city of strength, freedom, and history.",
-      "about_city_copy": "Located along the mighty Dnipro River, Zaporizhzhia is a modern city with deep historical roots. It is the birthplace of the legendary Zaporizhian Sich on Khortytsia Island — the heart of Ukrainian Cossackdom. Today, the city blends industrial power, architectural heritage, and natural beauty, creating a unique atmosphere for travelers. Feel the Cossack spirit. Stroll along scenic riverbanks. Visit the city’s most iconic landmarks.",
+      "about_city_copy": "Located along the mighty Dnipro River, Zaporizhzhia is a modern city with deep historical roots. It is the birthplace of the legendary Zaporizhzhian Sich on Khortytsia Island — the heart of Ukrainian Cossackdom. Today, the city blends industrial power, architectural heritage, and natural beauty, creating a unique atmosphere for travelers. Feel the Cossack spirit. Stroll along scenic riverbanks. Visit the city’s most iconic landmarks.",
       "popular_places": "Popular Tourist Places",
       "popular_place_1": "Khortytsia Island",
       "popular_place_2": "Sobornyi Avenue",
@@ -28,5 +28,11 @@
     "title": "Visit Zaporizhzhia",
     "button": "Get direction",
     "tooltip": "Access to location blocked"
+  },
+  "footer": {
+    "about_title": "About the project",
+    "about_text": "This site was created to promote tourist locations in the city of Zaporizhzhia",
+    "nav_title": "Navigation",
+    "nav_link": "Home"
   }
 }
