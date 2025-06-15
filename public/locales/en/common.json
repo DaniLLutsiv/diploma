@@ -34,5 +34,31 @@
     "about_text": "This site was created to promote tourist locations in the city of Zaporizhzhia",
     "nav_title": "Navigation",
     "nav_link": "Home"
+  },
+  "admin": {
+    "title": "Admin panel",
+    "page": {
+      "title": "Locations",
+      "add": "Add location",
+      "edit": "Edit location"
+    },
+    "form": {
+      "back": "Back",
+      "title": "Location title",
+      "description": "Location description",
+      "image": "Location images",
+      "ua": "Ukrainian",
+      "en": "English",
+      "file_size_error": "Exceed max image size. The image should be no more than 5MB",
+      "categories": "Categories",
+      "submit": "Submit",
+      "lat": "Latitude",
+      "lng": "Longitude"
+    }
+  },
+  "admin_header": {
+    "website": "Main website",
+    "locations": "Locations",
+    "add": "Add location"
   }
 }

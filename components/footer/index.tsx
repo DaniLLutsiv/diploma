@@ -20,7 +20,7 @@ export const Footer = () => {
                     <div>{t("footer.about_title")}</div>
                     <div className="font-normal max-w-[15rem]">{t("footer.about_text")}</div>
                 </div>
-                <div className="flex items-center justify-between">
+                <div className="flex justify-between">
                     <div className="flex flex-col gap-2">
                         <div>{t("footer.nav_title")}</div>
                         <NavLink href="/" className="font-normal">

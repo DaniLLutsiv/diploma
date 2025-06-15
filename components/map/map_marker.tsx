@@ -42,7 +42,7 @@ export const MapMarker: React.FC<IProps> =
         const {isMobile} = useIsMobile()
         const {id, coordinates} = location;
         const title = location.title[i18n.language];
-        const poiImage = poiIcons[location.categories?.[0] || CategoryType.Common];
+        const poiImage = poiIcons[location.type || CategoryType.Common];
 
         const handleClick = useCallback(
             (ev: google.maps.MapMouseEvent, id: string) => {

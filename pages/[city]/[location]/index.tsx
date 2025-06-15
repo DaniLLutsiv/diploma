@@ -196,7 +196,7 @@ export default function Location({location}: InferGetServerSidePropsType<typeof 
                         <div>
                             <LocationTitle>{title}</LocationTitle>
 
-                            <LocationDescription>{description}</LocationDescription>
+                            <LocationDescription dangerouslySetInnerHTML={{__html: description}}/>
 
                             <Tooltip title={t("location.tooltip")} disableHoverListener={!isLocationDisabled}>
                                 <span>

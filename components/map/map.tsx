@@ -2,10 +2,11 @@ import {APIProvider, Map} from "@vis.gl/react-google-maps";
 import styled from "@emotion/styled";
 import React, {useState} from "react";
 import {Markers} from "./markers";
-import {ICategory, ILocation} from "types";
+import {CategoryType, ICategory, ILocation} from "types";
 import {Filters} from "components/map/filters";
 import {LocationModal} from "components/map/location_modal";
 import {CurrentLocation} from "./current_location";
+import {intersection} from "lodash";
 
 const Wrapper = styled.div`
     width: 100%;
@@ -29,6 +30,8 @@ interface IMapComponent {
 const MapComponent: React.FC<IMapComponent> = ({locations, categories}) => {
     const [selectedLocationId, setSelectedLocationId] = useState<string | null>(null)
     const selectedLocation = locations.find((location) => location.id === selectedLocationId);
+    const [selectedCategories, setSelectedCategories] = useState<CategoryType[]>(categories.map(({type}) => type));
+    const filterLocations = locations.filter(({categories}) => intersection(categories, selectedCategories).length);
 
     const closeModal = () => {
         setSelectedLocationId(null);
@@ -38,8 +41,8 @@ const MapComponent: React.FC<IMapComponent> = ({locations, categories}) => {
         <Wrapper>
             <APIProvider apiKey={process.env.NEXT_PUBLIC_MAP_API_KEY as string} libraries={["marker"]}>
                 <Map {...settings}>
-                    <Markers locations={locations} onOpenModal={setSelectedLocationId} selectedLocationId={selectedLocationId}/>
-                    <Filters categories={categories} />
+                    <Markers locations={filterLocations} onOpenModal={setSelectedLocationId} selectedLocationId={selectedLocationId}/>
+                    <Filters categories={categories} selectedCategories={selectedCategories} setSelectedCategories={setSelectedCategories}/>
                     <LocationModal location={selectedLocation} onClose={closeModal} />
                     <CurrentLocation />
                 </Map>

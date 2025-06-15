@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "@emotion/styled";
 import {Checkbox, FormControlLabel, IconButton, Menu, MenuItem} from "@mui/material";
-import {ICategory} from "types";
+import {CategoryType, ICategory} from "types";
 import {useTranslation} from "next-i18next";
+import {xor} from "lodash";
 
 const Wrapper = styled.div`
     position: absolute;
@@ -20,9 +21,11 @@ const Button = styled(IconButton)`
 
 interface IFilters {
     categories: ICategory[];
+    selectedCategories: string[];
+    setSelectedCategories: React.Dispatch<React.SetStateAction<CategoryType[]>>;
 }
 
-export const Filters: React.FC<IFilters> = ({categories}) => {
+export const Filters: React.FC<IFilters> = ({categories, setSelectedCategories, selectedCategories}) => {
     const {i18n} = useTranslation();
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
@@ -48,7 +51,13 @@ export const Filters: React.FC<IFilters> = ({categories}) => {
             >
                 {categories.map((category) => (
                     <MenuItem key={category.id}>
-                        <FormControlLabel control={<Checkbox defaultChecked />} label={category.name[lang]} />
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    checked={selectedCategories.includes(category.type)}
+                                    onChange={() => setSelectedCategories((prev) => xor(prev, [category.type]))}
+                                />}
+                            label={category.name[lang]}/>
                     </MenuItem>
                 ))}
             </Menu>

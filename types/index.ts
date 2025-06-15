@@ -1,3 +1,8 @@
+export enum Language {
+    EN = "en",
+    UA = "ua",
+}
+
 export enum MarkerType {
     COMMON = "common",
 }
@@ -28,7 +33,7 @@ export interface ILocation {
     description: Record<string, string>;
     categories?: CategoryType[];
     status: MarkerStatus;
-    type: MarkerType;
+    type: CategoryType;
 }
 
 export interface ICategory {

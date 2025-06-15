@@ -114,7 +114,7 @@ export const LocationModal: React.FC<ILocationModal> = ({location, onClose}) => 
     const lang = i18n.language;
     const name = location.title[lang];
     const desc = location.description[lang];
-    console.log(location)
+
     return (
         <Wrapper>
             <CloseBlock>
@@ -138,7 +138,7 @@ export const LocationModal: React.FC<ILocationModal> = ({location, onClose}) => 
 
                 <Title>{name}</Title>
 
-                <Desc>{desc}</Desc>
+                <Desc dangerouslySetInnerHTML={{__html: desc}}/>
 
                 <NavLink href={`/${query.city as string}/${location.id}`}>
                     {t("map.modal_location.more")}
