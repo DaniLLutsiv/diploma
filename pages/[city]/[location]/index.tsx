@@ -63,8 +63,10 @@ export const getServerSideProps: GetServerSideProps<ConnectionStatus> = async ({
     };
 };
 
-const Wrapper = styled.main`
+const Wrapper = styled.div`
     background: #F9F9F9;
+    position: relative;
+    z-index: 0;
 
     .swiper {
         --swiper-navigation-size: 24px;

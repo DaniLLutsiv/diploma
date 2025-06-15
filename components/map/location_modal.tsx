@@ -52,6 +52,8 @@ const ImageContainer = styled.div`
     width: 100%;
 
     img {
+        max-height: 40vh;
+        object-fit: cover;
         border-radius: 8px;
     }
 `;
