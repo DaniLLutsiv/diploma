@@ -25,7 +25,7 @@ const Links = styled.div`
         text-decoration: underline;
         color: white;
     }
-    
+
     @media (width >= 64rem) {
         display: flex;
         gap: 24px;
@@ -81,7 +81,8 @@ export const AdminHeader = () => {
 
                     <Links className="justify-self-center">
                         {links.map(({url, text}) => (
-                            <NavLink key={url} href={url} className="block py-2 pr-4 pl-3 rounded lg:bg-transparent lg:p-0">
+                            <NavLink key={url} href={url}
+                                     className="block py-2 pr-4 pl-3 rounded lg:bg-transparent lg:p-0">
                                 {text}
                             </NavLink>
                         ))}
@@ -100,14 +101,21 @@ export const AdminHeader = () => {
                             </BurgerButton>
 
                             {links.map(({url, text}) => (
-                                <NavLink key={url} href={url} className="block py-2 pr-4 pl-3 rounded lg:bg-transparent lg:p-0">
+                                <NavLink key={url} href={url}
+                                         className="block py-2 pr-4 pl-3 rounded lg:bg-transparent lg:p-0">
                                     {text}
                                 </NavLink>
                             ))}
+                            <NavLink href={"/logout"} className="block py-2 pr-4 pl-3 rounded lg:bg-transparent lg:p-0">
+                                {t("header.logout")}
+                            </NavLink>
                         </MobileList>
                     </SwipeableDrawer>
 
-                    <LangSelector />
+                    <div className="flex items-center text-white justify-end">
+                        <LangSelector/>
+                        <NavLink className="hidden lg:block" href={"/logout"}>{t("header.logout")}</NavLink>
+                    </div>
                 </Container>
             </nav>
         </header>

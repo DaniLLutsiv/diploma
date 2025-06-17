@@ -111,7 +111,7 @@ export default function Admin({locations}: InferGetServerSidePropsType<typeof ge
                     <AdminHeader/>
                 </div>
 
-                <div className="p-5 md:p-10">
+                <div className="p-5 md:p-10 mx-auto max-w-screen-xl">
                     <div className="flex items-center justify-between">
                         <div className="text-3xl font-bold">{t("admin.page.title")}</div>
 

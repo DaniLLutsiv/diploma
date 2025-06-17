@@ -1,5 +1,4 @@
 import {useState} from "react";
-import {useRouter} from "next/router";
 import {useTranslation} from 'next-i18next'
 import NavLink from "components/nav_link"
 import LangSelector from "components/lang_selector"
@@ -53,16 +52,15 @@ const Container = styled.div`
 
 export const Header = () => {
     const {t} = useTranslation();
-    const {query} = useRouter();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     const links = [
         {
-            url: `/${query.city as string}`,
+            url: `/zaporizhzhia`,
             text: t("header.home"),
         },
         {
-            url: `/${query.city as string}/map`,
+            url: `/zaporizhzhia/map`,
             text: t("header.map"),
         }
     ]

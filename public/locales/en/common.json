@@ -16,7 +16,8 @@
   },
   "header": {
     "home": "Home",
-    "map": "Map"
+    "map": "Map",
+    "logout": "Logout"
   },
   "map": {
     "title": "Visit Zaporizhzhia",
@@ -60,5 +61,17 @@
     "website": "Main website",
     "locations": "Locations",
     "add": "Add location"
+  },
+  "login": {
+    "title": "Login",
+    "form": {
+      "title": "Login form",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Login"
+    },
+    "error": {
+      "non_auth": "Incorrect email address or password"
+    }
   }
 }

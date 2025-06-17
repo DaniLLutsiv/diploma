@@ -238,7 +238,7 @@ export default function AdminLocation({location = emptyLocation, categories}: In
                     <AdminHeader/>
                 </div>
 
-                <div className="p-5 md:p-10 max-w-[840px]">
+                <div className="p-5 md:p-10 max-w-[840px] mx-auto">
                     <div className="flex items-center justify-between mb-8">
                         <Button variant="contained" component={NavLink} href={`/admin`}>
                             {t("admin.form.back")}
