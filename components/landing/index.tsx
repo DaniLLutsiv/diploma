@@ -147,17 +147,17 @@ export const Landing = () => {
                     <SubTitle className="mb-5 md:mb-10">{t("home.landing.popular_places")}</SubTitle>
 
                     <div className="flex justify-center items-center flex-col gap-4 md:flex-row md:gap-5 w-full">
-                        <Item>
+                        <Item href="/zaporizhzhia/684ec9a0be05fa84741d3b70">
                             <Image fill src="/images/zaporizhzhia/zp-4.png" alt=""/>
                             <h3>{t("home.landing.popular_place_1")}</h3>
                         </Item>
 
-                        <Item>
+                        <Item href="/zaporizhzhia/684f072cbe05fa84741d3b73">
                             <Image fill src="/images/zaporizhzhia/zp-5.png" alt=""/>
                             <h3>{t("home.landing.popular_place_2")}</h3>
                         </Item>
 
-                        <Item>
+                        <Item href="/zaporizhzhia/684f1cd4be05fa84741d3b7d">
                             <Image fill src="/images/zaporizhzhia/zp-6.png" alt=""/>
                             <h3>{t("home.landing.popular_place_3")}</h3>
                         </Item>

@@ -98,9 +98,7 @@ export const getServerSideProps: GetServerSideProps<ConnectionStatus> = async ({
     }
 };
 
-export default function Home({
-                                 isConnected,
-                             }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Home({}: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const {t} = useTranslation();
     const {query} = useRouter();
     const images = ["/images/zaporizhzhia/bg.jpg", "/images/zaporizhzhia/bg-2.png"];

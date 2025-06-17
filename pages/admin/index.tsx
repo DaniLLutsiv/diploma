@@ -107,7 +107,7 @@ export default function Admin({locations}: InferGetServerSidePropsType<typeof ge
             </Head>
 
             <Wrapper>
-                <div className="flex bg-[#1b5243] w-full">
+                <div className="flex bg-[#1b5243] w-full relative z-10">
                     <AdminHeader/>
                 </div>
 
@@ -129,7 +129,7 @@ export default function Admin({locations}: InferGetServerSidePropsType<typeof ge
                             return (
                                 <Location key={location.id}>
                                     {image && (
-                                        <Image className="md:hidden h-full object-cover" width={500} height={500} src={image} alt=""/>
+                                        <Image className="md:hidden h-full object-cover w-full" width={500} height={500} src={image} alt=""/>
                                     )}
 
                                     <div>

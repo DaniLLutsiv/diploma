@@ -61,7 +61,7 @@ export const AdminHeader = () => {
             text: t("admin_header.website"),
         },
         {
-            url: `/admin/locations`,
+            url: `/admin/`,
             text: t("admin_header.locations"),
         },
     ]

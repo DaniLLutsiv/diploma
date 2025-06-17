@@ -51,10 +51,12 @@
       "ua": "Ukrainian",
       "en": "English",
       "file_size_error": "Exceed max image size. The image should be no more than 5MB",
+      "file_type_error": "Unsupported file type",
       "categories": "Categories",
       "submit": "Submit",
       "lat": "Latitude",
-      "lng": "Longitude"
+      "lng": "Longitude",
+      "coordinates": "Coordinates"
     }
   },
   "admin_header": {

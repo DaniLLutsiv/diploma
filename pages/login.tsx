@@ -83,7 +83,7 @@ export default function Login() {
                 </div>
 
                 <form
-                    className="max-w-[400px] mx-auto w-full mt-8 md:mt-15"
+                    className="max-w-[440px] mx-auto w-full mt-8 md:mt-10 p-5"
                     noValidate onSubmit={submitHandler} onChange={() => setError("")}>
                     <div className="flex flex-col items-center w-full gap-5 mb-5">
                         <div className="text-xl font-bold">{t("login.form.title")}</div>

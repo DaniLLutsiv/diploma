@@ -124,7 +124,7 @@ const emptyLocation: ILocation = {
     type: CategoryType.Common,
 }
 
-export default function AdminLocation({location = emptyLocation, categories}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function AdminLocation({location = emptyLocation, categories, ...rest}: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const {t, i18n} = useTranslation();
     const router = useRouter();
     const lang = i18n.language;
@@ -148,6 +148,12 @@ export default function AdminLocation({location = emptyLocation, categories}: In
 
         const KB_SIZE = 1024;
         const fileSize = file.size / KB_SIZE / KB_SIZE; // in MiB
+
+        if (!file.type.includes("image")) {
+            setError(t("admin.form.file_type_error"))
+            event.target.value = "";
+            return;
+        }
 
         const MAX_FILE_SIZE = 5;
         if (fileSize > MAX_FILE_SIZE) {
@@ -234,7 +240,7 @@ export default function AdminLocation({location = emptyLocation, categories}: In
             </Head>
 
             <Wrapper>
-                <div className="flex bg-[#1b5243] w-full">
+                <div className="flex bg-[#1b5243] w-full relative z-10">
                     <AdminHeader/>
                 </div>
 
@@ -316,8 +322,8 @@ export default function AdminLocation({location = emptyLocation, categories}: In
 
                             <div className="flex gap-2 flex-wrap">
                                 {state.images.map((image) => (
-                                    <div key={image} className="relative">
-                                        <Image className="w-[374px] h-[250px] object-cover" width={450}
+                                    <div key={image} className="relative w-full max-w-[374px]">
+                                        <Image className="w-full max-w-[374px] h-auto max-h-[250px] object-cover" width={450}
                                                height={300}
                                                src={image} alt=""/>
                                         <DeleteButton onClick={() => deleteFile(image)}>
@@ -326,8 +332,8 @@ export default function AdminLocation({location = emptyLocation, categories}: In
                                     </div>
                                 ))}
                                 {files.map((file) => (
-                                    <div key={file.name} className="relative">
-                                        <Image className="w-[374px] h-[250px] object-cover" width={450}
+                                    <div key={file.name} className="relative w-full max-w-[374px]">
+                                        <Image className="w-full max-w-[374px] h-auto max-h-[250px] object-cover" width={450}
                                                height={300}
                                                src={URL.createObjectURL(file)} alt=""/>
                                         <DeleteButton onClick={() => deleteLocalFile(file.name)}>
@@ -337,7 +343,7 @@ export default function AdminLocation({location = emptyLocation, categories}: In
                                 ))}
 
                                 <FileInputContainer
-                                    className={`w-[374px] h-[250px] relative text-center px-4 py-6 text-white cursor-pointer border-dashed border-2 border-[#5E4FF0] rounded ${isDragOver ? "active" : ""}`}
+                                    className={`max-w-[374px] w-full h-[250px] relative text-center px-4 py-6 text-white cursor-pointer border-dashed border-2 border-[#5E4FF0] rounded ${isDragOver ? "active" : ""}`}
                                     onDragOver={() => setIsDragOver(true)}
                                     onDragEnd={() => setIsDragOver(false)}
                                     onDragLeave={() => setIsDragOver(false)}
