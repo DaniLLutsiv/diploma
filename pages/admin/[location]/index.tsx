@@ -391,6 +391,5 @@ export default function AdminLocation({location = emptyLocation, categories}: In
                 </div>
             </Wrapper>
         </div>
-    )
-        ;
+    );
 }

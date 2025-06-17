@@ -52,12 +52,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             coordinates,
             type,
             status: MarkerStatus.Open,
-            // image
         }
 
         // update location
         if (location._id) {
-            const image = JSON.stringify([...oldImages, ...fileNames.map((file) => `/images/zaporizhzhia/${String(location._id)}/${file}`)])
+            const image = createFileNames(String(location._id), oldImages, get(files, "files", []))
 
             await db.collection('location')
                 .updateOne(
@@ -77,7 +76,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
             location._id = result.insertedId
 
-            const image = JSON.stringify([...oldImages, ...fileNames.map((file) => `/images/zaporizhzhia/${String(location._id)}/${file}`)])
+            const image = createFileNames(String(location._id), oldImages, get(files, "files", []))
 
             await db.collection('location')
                 .updateOne(
@@ -108,6 +107,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     } catch (e: any) {
         console.log(e)
         res.status(500).json({error: e.message});
+    }
+}
+
+const createFileNames = (locationId: string, oldImages: string[], files: formidable.File[]) => {
+    if (process.env.NEXT_DEV_MODE) {
+        const fileNames = files.map(({originalFilename}) => originalFilename)
+        return JSON.stringify([...oldImages, ...fileNames.map((file) => `/images/zaporizhzhia/${locationId}/${file}`)])
+    } else {
+        return JSON.stringify([...oldImages, ...files.map((file) => `data:image/${file.originalFilename?.split('.').pop() || "png"};base64,${fs.readFileSync(file.filepath, { encoding: 'base64' })}`)])
     }
 }
 
