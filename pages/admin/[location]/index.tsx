@@ -323,7 +323,7 @@ export default function AdminLocation({location = emptyLocation, categories, ...
                             <div className="flex gap-2 flex-wrap">
                                 {state.images.map((image) => (
                                     <div key={image} className="relative w-full max-w-[374px]">
-                                        <Image className="w-full max-w-[374px] h-auto max-h-[250px] object-cover" width={450}
+                                        <Image className="w-full max-w-[374px] h-[250px] max-h-[250px] object-cover" width={450}
                                                height={300}
                                                src={image} alt=""/>
                                         <DeleteButton onClick={() => deleteFile(image)}>
@@ -333,7 +333,7 @@ export default function AdminLocation({location = emptyLocation, categories, ...
                                 ))}
                                 {files.map((file) => (
                                     <div key={file.name} className="relative w-full max-w-[374px]">
-                                        <Image className="w-full max-w-[374px] h-auto max-h-[250px] object-cover" width={450}
+                                        <Image className="w-full max-w-[374px] h-[250px] max-h-[250px] object-cover" width={450}
                                                height={300}
                                                src={URL.createObjectURL(file)} alt=""/>
                                         <DeleteButton onClick={() => deleteLocalFile(file.name)}>
