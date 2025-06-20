@@ -74,7 +74,7 @@ export const AdminHeader = () => {
                         <img src={"/images/icons/burger_white.svg"} alt=""/>
                     </BurgerButton>
 
-                    <NavLink href="/" className="justify-self-center md:justify-self-start sm:flex">
+                    <NavLink href="/" className="justify-self-center lg:justify-self-start sm:flex">
                         <img src="/images/logo_white.png" className="mr-3 h-9 sm:h-12"
                              alt="Лого"/>
                     </NavLink>
